@@ -1,4 +1,9 @@
 const tmi = require('tmi.js');
+const ChatModel = require('./models/chat');
+const express = require('express');
+const app = express();
+
+let ChatModelView = [];
 
 let options = {
 	options: {
@@ -9,18 +14,32 @@ let options = {
 		reconnect: true
 	},
 	identity: {
-		username: "Name",
-		password: "bla bla bla"
+		username: "@Name",
+		password: "bla bla bla!"
 	},
-	channels: ['Adobe']
+	channels: ['gfinitytv']
 }
 
 let client = new tmi.client(options);
 client.connect();
 
-client.on('chat', function(channel, user, message, self){
-	client.action(channel, user['display-name'] + " Hola!")
+app.get('/chat/bot', function(req, res){
+	res.send(ChatModelView)
 })
-client.on("connected", function (address, port) {
-    client.action(options.channels[0], "Hello This is @Zekas90's bot for testing test test test show clappings :D")
+
+client.on('chat', function(channel, user, message, self){
+	 ChatModelView.push(
+	 	new ChatModel({
+		channel,
+		user: user['display-name'],
+		message
+	}))
+})
+
+app.listen(process.env.port || 4000, function(){
+	console.log('Listening!')
+})
+
+client.on("connected", function (channel, user, port) {
+  	console.log('Hola! Iam Connected')
 });
