@@ -15,13 +15,16 @@ let options = {
 	},
 	identity: {
 		username: "@Name",
-		password: "bla bla bla!"
+		password: "bla bla bla"
 	},
-	channels: ['gfinitytv']
+	channels: ['adobe']
 }
 
 let client = new tmi.client(options);
 client.connect();
+
+
+app.use(express.static('public'));
 
 app.get('/chat/bot', function(req, res){
 	res.send(ChatModelView)
@@ -36,7 +39,7 @@ client.on('chat', function(channel, user, message, self){
 	}))
 })
 
-app.listen(process.env.port || 4000, function(){
+app.listen(process.env.port || 8080, function(){
 	console.log('Listening!')
 })
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		fetch('http://localhost:8080/chat/bot').then(data => data.json()).then(res => document.write(res))
+		setInterval(function(){
+			location.reload(true/false);
+		}, 2000)
+	</script>
+</body>
+</html>
