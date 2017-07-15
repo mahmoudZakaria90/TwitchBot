@@ -3,15 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 </head>
 <body>
-	
 
-	<script>
-		fetch('http://localhost:8080/chat/bot').then(data => data.json()).then(res => document.write(res))
-		setInterval(function(){
-			location.reload(true/false);
-		}, 2000)
-	</script>
+	<h1>Zekas Chat bot</h1>
+	<script src="/chat.js"></script>
 </body>
 </html>
