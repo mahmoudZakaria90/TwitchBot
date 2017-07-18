@@ -7,6 +7,7 @@ html,
 body {
 	font-family: 'Arial';
 	height: 100%;
+	overflow: hidden;
 }
 
 .center {
@@ -21,28 +22,51 @@ h1 {
 
 .app {
 	height: 300px;
-	overflow: auto;
+	overflow: hidden;
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	overflow: auto;
 	justify-content: center;
+	align-items: center;
+	background-color: #81dec9;
+	padding: 15px;
+	color: white;
 }
-.app:before,
-.app:after {
+
+.app-inner {
+	flex-basis: 100%;
+	text-align: center;
+}
+
+.app .before,
+.app .after {
 	content: '';
-	position: fixed;
+	position: absolute;
 	right: 0;
 	left: 0;
 	height: 50px;
 	z-index: 55555
 }
 
-.app:before {
+.app .before {
 	top: 0;
 	background-image: linear-gradient(to bottom, white 0%, transparent 100%);
 }
 
-.app:after {
+.app .after {
 	bottom: 0;
 	background-image: linear-gradient(to top, white 0%, transparent 100%);
+}
+
+.app-inner p {
+	transition: all 450ms;
+	opacity: 0;
+	transform: translateY(10px);
+	height: 0
+}
+
+.app-inner .show {
+	opacity: 1;
+	transform: translateY(0px);
+	margin-bottom: 60px;
 }
