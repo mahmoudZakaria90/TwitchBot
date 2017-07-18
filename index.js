@@ -13,8 +13,8 @@ const options = {
 		reconnect: true
 	},
 	identity: {
-		username: "@Name",
-		password: "Bla Bla Bla"
+		username: "",
+		password: ""
 	},
 	channels: ['Adobe']
 }
