@@ -52,6 +52,7 @@ client.on('action', function(channel, user, message, self){
 		user: user['display-name'],
 		message
 	}))
+	io.sockets.emit('chat', ChatModelView[ChatModelView.length - 1]);
 })
 
 client.on("connected", function (address,channel, user, port) {
@@ -73,6 +74,11 @@ const server = app.listen(process.env.port || 8080, function(){
  //Socket setup
  const io = socket(server);
  io.on('connection', function(socket){
- 	console.log('Socket ID', socket.id)
+ 	console.log('Socket ID', socket.id);
+ 	socket.on('clientChat', function(msg){
+ 		client.action(options.channels[0], msg, {color: 'green'})
+ 	})
  })
+
+
 

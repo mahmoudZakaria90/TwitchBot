@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
+	<h3 target="_blank" style="padding: 10px">Watch the Chat updates <a href="https://www.twitch.tv/adobe">https://www.twitch.tv/adobe</a></h3>
 	<div class="center">
 		<h1>Zekas Chat bot</h1>
 		<div id="app" class="app">
@@ -15,6 +15,11 @@
 			<div id="app-inner" class="app-inner"></div>
 			<div class="after"></div>
 		</div>
+
+		<form id="chatForm">
+			<input placeholder="Type your message..." type="text" id="chatInput">
+			<button type="Submit">Send</button>
+		</form>
 	</div>
 	<script src="/chat.js"></script>
 </body>
