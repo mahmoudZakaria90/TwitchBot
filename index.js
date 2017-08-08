@@ -26,9 +26,13 @@ const randomMsg = function(){
 }
 
 //Make the connection to chat up there
-const server = app.listen(process.env.port || 8080, function(){
+app.set('port', (process.env.PORT || 5000));
+const server = app.listen(app.get('port'), function(){
 	console.log('Listening!')
 })
+
+app.use(express.static(__dirname + '/public'));
+
 const client = new tmi.client(options);
 client.connect();
 const io = socket(server);
@@ -66,8 +70,6 @@ client.on("connected", function (address, port) {
 
 
 //Server, Socket
-app.use(express.static('public'));
-
 app.get('/chat/bot', function(req, res){
 	res.send(ChatModelView)
 })
