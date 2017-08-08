@@ -14,7 +14,11 @@
     "tmi.js": "^1.2.1",
     "ejs": "2.5.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
   "scripts": {
     "dev": "node_modules/.bin/nodemon index",
     "start": "node index.js",
@@ -22,9 +26,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mahmoudZakaria90/TwitchBot.git"
+    "url": "https://github.com/heroku/node-js-getting-started"
   },
-  "author": "",
+  "author": "Zekas",
   "keywords": [
     "node",
     "heroku",
