@@ -34,9 +34,5 @@
     "heroku",
     "express"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mahmoudZakaria90/TwitchBot/issues"
-  },
-  "homepage": "https://github.com/mahmoudZakaria90/TwitchBot#readme"
+  "license": "MIT"
 }
