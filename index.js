@@ -70,7 +70,6 @@ client.on("connected", function (address, port) {
   	io.sockets.emit('channelName', options.channels[0]);
 });
 
-
 //Server, Socket
 app.get('/chat/bot', function(req, res){
 	res.send(ChatModelView)
