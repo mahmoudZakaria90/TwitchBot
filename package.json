@@ -1,7 +1,7 @@
 {
   "name": "twitchBot",
   "version": "1.0.0",
-  "description": "```node index```",
+  "description": "",
   "engines": {
     "node": "6.11.1"
   },
