@@ -7,17 +7,15 @@
 	<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-	<h3 target="_blank" style="padding: 10px">Watch the Chat updates <a href="https://www.twitch.tv/adobe">https://www.twitch.tv/adobe</a></h3>
+	<h3  style="padding: 10px">Watch the Chat updates <a id="chatURL" target="_blank" href="https://www.twitch.tv/">https://www.twitch.tv/<span id="chatHost"></span></a></h3>
 	<div class="center">
-		<h1>Zekas Chat bot</h1>
+		<h1>ZekasChatBot, <span id="chatTitle"></span></h1>
 		<div id="app" class="app">
-			<div class="before"></div>
 			<div id="app-inner" class="app-inner"></div>
-			<div class="after"></div>
 		</div>
 
 		<form id="chatForm">
-			<input placeholder="Type your message..." type="text" id="chatInput">
+			<input placeholder="Type your message..." type="text" id="chatInput" autocomplete="off" required="">
 			<button type="Submit">Send</button>
 		</form>
 	</div>

@@ -2,26 +2,35 @@
   "name": "twitchBot",
   "version": "1.0.0",
   "description": "```node index```",
+  "engines": {
+    "node": "6.11.1"
+  },
   "main": "index.js",
   "dependencies": {
     "express": "^4.15.3",
     "mongoose": "^4.10.8",
     "nodemon": "^1.11.0",
     "socket.io": "^2.0.3",
-    "tmi.js": "^1.2.1"
+    "tmi.js": "^1.2.1",
+    "ejs": "2.5.6"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node_modules/.bin/nodemon index"
+    "dev": "node_modules/.bin/nodemon index",
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mahmoudZakaria90/TwitchBot.git"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mahmoudZakaria90/TwitchBot/issues"
   },

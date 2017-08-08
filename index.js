@@ -13,10 +13,10 @@ const options = {
 		reconnect: true
 	},
 	identity: {
-		username: "",
-		password: ""
+		username: "mzakaria90",
+		password: "oauth:f1repawou0kjlb43685rdhbfaj5q19"
 	},
-	channels: ['Adobe']
+	channels: ['capguntom']
 }
 
 const randomMsg = function(){
@@ -26,8 +26,12 @@ const randomMsg = function(){
 }
 
 //Make the connection to chat up there
+const server = app.listen(process.env.port || 8080, function(){
+	console.log('Listening!')
+})
 const client = new tmi.client(options);
 client.connect();
+const io = socket(server);
 
 //Events
 client.on('chat', function(channel, user, message, self){
@@ -55,8 +59,9 @@ client.on('action', function(channel, user, message, self){
 	io.sockets.emit('chat', ChatModelView[ChatModelView.length - 1]);
 })
 
-client.on("connected", function (address,channel, user, port) {
-  	console.log('Hola! Iam Connected to', options.channels[0])
+client.on("connected", function (address, port) {
+  	console.log('Hola! Iam Connected to', options.channels[0]);
+	io.sockets.emit('channelName', options.channels[0]);
 });
 
 
@@ -67,18 +72,18 @@ app.get('/chat/bot', function(req, res){
 	res.send(ChatModelView)
 })
 
-const server = app.listen(process.env.port || 8080, function(){
-	console.log('Listening!')
-})
 
  //Socket setup
- const io = socket(server);
  io.on('connection', function(socket){
  	console.log('Socket ID', socket.id);
  	socket.on('clientChat', function(msg){
- 		client.action(options.channels[0], msg, {color: 'green'})
+ 		client.action(options.channels[0], msg)
  	})
  })
 
+
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 
