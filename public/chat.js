@@ -31,7 +31,7 @@
 	function channelCb(data) {
 		chatTitle.innerHTML = data;
 		chatHost.innerHTML = data.slice(1);
-		chatURL.href += chatHost.innerHTML;
+		chatURL.href = 'https://www.twitch.tv/' + chatHost.innerHTML;
 	}
 
 	//Chat
