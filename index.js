@@ -51,6 +51,7 @@ client.on('chat', function(channel, user, message, self){
 	 // }, 3000);
 
 	 io.sockets.emit('chat', ChatModelView[ChatModelView.length - 1]);
+	 io.sockets.emit('channelName', options.channels[0]);
 })
 
 client.on('action', function(channel, user, message, self){
@@ -61,11 +62,12 @@ client.on('action', function(channel, user, message, self){
 		message
 	}))
 	io.sockets.emit('chat', ChatModelView[ChatModelView.length - 1]);
+	io.sockets.emit('channelName', options.channels[0]);
 })
 
 client.on("connected", function (address, port) {
   	console.log('Hola! Iam Connected to', options.channels[0]);
-	io.sockets.emit('channelName', options.channels[0]);
+  	io.sockets.emit('channelName', options.channels[0]);
 });
 
 
@@ -73,7 +75,6 @@ client.on("connected", function (address, port) {
 app.get('/chat/bot', function(req, res){
 	res.send(ChatModelView)
 })
-
 
  //Socket setup
  io.on('connection', function(socket){
