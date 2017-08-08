@@ -1,6 +1,6 @@
 //Make the connection
 (function(){
-	const socket = io.connect('http://localhost:8080');
+	const socket = io.connect('https://twitchzekasbot.herokuapp.com/', {secure: true});
 	const dataLength = [];	
 	const app = document.querySelector('.app');
 	const appBarBefore = document.querySelector('.app .before');
@@ -32,13 +32,6 @@
 		chatURL.href += chatHost.innerHTML;
 	}
 
-	//UI
-	function scrolling(){
-		appBarBefore.style.top = app.scrollTop + 'px';
-		appBarAfter.style.bottom = '-' + app.scrollTop + 'px';
-		// app.scrollTop = window.pageYOffset
-	}
-
 	//Chat
 	function chat(e){
 		e.preventDefault();
@@ -50,7 +43,6 @@
 	//Listeners
 	socket.on('chat', cb);
 	socket.on('channelName', channelCb)
-	app.addEventListener('scroll', scrolling);
 	chatForm.addEventListener('submit', chat)
 
 })()
