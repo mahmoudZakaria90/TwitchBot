@@ -75,6 +75,9 @@ button {
 	margin-bottom: 20px;
 	border-bottom: 1px solid #5da591;
 }
+.app-inner p:last-of-type {
+	margin-bottom: 0;
+}
 
 .app-inner .show {
 	opacity: 1;
