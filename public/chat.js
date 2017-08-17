@@ -24,7 +24,7 @@
 		document.querySelector('#app-inner').innerHTML += `<p><strong style=text-decoration:underline;color:${randomize()}>${data.user}:</strong> <span style=color:${randomize()}>${data.message}</span></p>`;
 		let para = document.querySelectorAll('#app-inner p');
 		document.title = `Document has (${dataLength.length})`;
-		app.scrollTop = (para[para.length - 1].offsetTop + para[para.length - 1].offsetHeight) + 60;
+		app.scrollTop = (para[para.length - 1].offsetTop + para[para.length - 1].offsetHeight);
 		para[para.length - 1].className = 'show';
 	}
 
