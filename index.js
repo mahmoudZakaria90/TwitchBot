@@ -14,7 +14,7 @@ const options = {
 	},
 	identity: {
 		username: "mzakaria90",
-		password: "oauth:f1repawou0kjlb43685rdhbfaj5q19"
+		password: "oauth:bw9krsbzn1s8j8fw1btve3ay4agcfq"
 	},
 	channels: ['the_goofer']
 }
