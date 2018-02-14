@@ -16,7 +16,7 @@ const options = {
 		username: "mzakaria90",
 		password: "oauth:f1repawou0kjlb43685rdhbfaj5q19"
 	},
-	channels: ['gigz']
+	channels: ['the_goofer']
 }
 
 const randomMsg = function(){
