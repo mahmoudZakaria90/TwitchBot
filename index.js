@@ -16,24 +16,18 @@ const options = {
     username: process.env.USERNAME,
     password: process.env.PASSWORD
   },
-  channels: ["the_goofer"]
+  channels: ["ninja", "tfue", "wadu", "drdisrespect", "the_goofer"]
 };
 
-const randomMsg = function() {
-  const msg = [
-    "Hola!",
-    "Cool!",
-    "Nice to meet u",
-    "Impressive!",
-    "This is amazing!"
-  ];
+const randomMsg = function () {
+  const msg = ["Hola!", "Cool!", "Nice to meet u", "Impressive!", "This is amazing!"];
   const random = Math.floor(Math.random() * msg.length);
   return msg[random];
 };
 
 //Make the connection to chat up there
 app.set("port", process.env.PORT || 5000);
-const server = app.listen(app.get("port"), function() {
+const server = app.listen(app.get("port"), function () {
   console.log("Listening!");
 });
 
@@ -44,14 +38,8 @@ client.connect();
 const io = socket(server);
 
 //Events
-client.on("chat", function(channel, user, message, self) {
-  ChatModelView.push(
-    new ChatModel({
-      channel,
-      user: user["display-name"],
-      message
-    })
-  );
+client.on("chat", function (channel, user, message, self) {
+  ChatModelView.push(new ChatModel({channel, user: user["display-name"], message}));
   // console.log(randomMsg())
   // setTimeout(function(){
   // 	client.action(channel, randomMsg())
@@ -61,32 +49,26 @@ client.on("chat", function(channel, user, message, self) {
   io.sockets.emit("channelName", options.channels[0]);
 });
 
-client.on("action", function(channel, user, message, self) {
-  ChatModelView.push(
-    new ChatModel({
-      channel,
-      user: user["display-name"],
-      message
-    })
-  );
+client.on("action", function (channel, user, message, self) {
+  ChatModelView.push(new ChatModel({channel, user: user["display-name"], message}));
   io.sockets.emit("chat", ChatModelView[ChatModelView.length - 1]);
   io.sockets.emit("channelName", options.channels[0]);
 });
 
-client.on("connected", function(address, port) {
+client.on("connected", function (address, port) {
   console.log("Hola! Iam Connected to", options.channels[0]);
   io.sockets.emit("channelName", options.channels[0]);
 });
 
 //Server, Socket
-app.get("/chat/bot", function(req, res) {
+app.get("/chat/bot", function (req, res) {
   res.send(ChatModelView);
 });
 
 //Socket setup
-io.on("connection", function(socket) {
+io.on("connection", function (socket) {
   console.log("Socket ID", socket.id);
-  socket.on("clientChat", function(msg) {
+  socket.on("clientChat", function (msg) {
     client.action(options.channels[0], msg);
   });
 });
