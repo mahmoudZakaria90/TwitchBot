@@ -10,7 +10,7 @@
     "express": "^4.15.3",
     "mongoose": "^4.10.8",
     "nodemon": "^1.11.0",
-    "socket.io": "^2.0.3",
+    "socket.io": "^2.4.0",
     "tmi.js": "^1.2.1",
     "ejs": "2.5.6"
   },
